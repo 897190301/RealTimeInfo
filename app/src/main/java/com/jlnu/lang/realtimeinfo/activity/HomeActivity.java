@@ -13,9 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.jlnu.lang.realtimeinfo.NewsViewPagerAdapter;
+import com.jlnu.lang.realtimeinfo.adapter.HomeViewPagerAdapter;
 import com.jlnu.lang.realtimeinfo.R;
 import com.jlnu.lang.realtimeinfo.fragment.MyFragment;
+import com.jlnu.lang.realtimeinfo.fragment.NewsFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +39,7 @@ public class HomeActivity extends AppCompatActivity
     ViewPager mViewPager;
 
     private List<Fragment> mFragments;
-    private NewsViewPagerAdapter mViewPagerAdapter;
+    private HomeViewPagerAdapter mViewPagerAdapter;
     private MenuItem pre_item;
 
     @Override
@@ -65,7 +66,7 @@ public class HomeActivity extends AppCompatActivity
 
     private void initFragments() {
         mFragments = new ArrayList<>();
-        mFragments.add(MyFragment.newInstance("新闻"));
+        mFragments.add(new NewsFragment());
         mFragments.add(MyFragment.newInstance("电影"));
         mFragments.add(MyFragment.newInstance("天气"));
     }
@@ -86,31 +87,8 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void initViewPager() {
-        mViewPagerAdapter = new NewsViewPagerAdapter(getSupportFragmentManager(),mFragments);
+        mViewPagerAdapter = new HomeViewPagerAdapter(getSupportFragmentManager(),mFragments);
         mViewPager.setAdapter(mViewPagerAdapter);
-        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                if (pre_item == null) {
-                    pre_item = mBottomNavView.getMenu().getItem(0);
-                    pre_item.setChecked(true);
-                } else {
-                    pre_item.setChecked(false);
-                }
-                pre_item = mBottomNavView.getMenu().getItem(position);
-                pre_item.setChecked(true);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
     }
 
     private void initBottomNavigationView() {

@@ -1,4 +1,4 @@
-package com.jlnu.lang.realtimeinfo;
+package com.jlnu.lang.realtimeinfo.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,11 +10,11 @@ import java.util.List;
  * Created by lilang on 2017/2/26.
  */
 
-public class NewsViewPagerAdapter extends FragmentPagerAdapter{
+public class HomeViewPagerAdapter extends FragmentPagerAdapter{
 
     private List<Fragment> mFragments;
 
-    public NewsViewPagerAdapter(FragmentManager fm, List<Fragment> mFragments) {
+    public HomeViewPagerAdapter(FragmentManager fm, List<Fragment> mFragments) {
         super(fm);
         this.mFragments = mFragments;
     }

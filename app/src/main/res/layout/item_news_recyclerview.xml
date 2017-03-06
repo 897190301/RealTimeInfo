@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/rl_one_pic"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:padding="@dimen/margin_5"
+        >
+
+        <ImageView
+            android:id="@+id/iv_one_pic"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:layout_marginRight="@dimen/margin_10"
+            android:src="@mipmap/icon"
+            />
+        <TextView
+            android:id="@+id/tv_one_pic_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/iv_one_pic"
+            android:layout_toRightOf="@id/iv_one_pic"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text=""/>
+
+        <RelativeLayout
+            android:id="@+id/ll_author_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/iv_one_pic"
+            android:layout_alignBottom="@id/iv_one_pic"
+            android:gravity="center_vertical">
+            <TextView
+                android:id="@+id/tv_one_pic_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="环球网"
+                android:textSize="12sp"
+                android:textColor="@color/fiftysix_txt"/>
+            <TextView
+                android:id="@+id/tv_one_pic_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="2017-01-11 12:38"
+                android:textSize="12sp"
+                android:textColor="@color/fiftysix_txt"/>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_three_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginBottom="@dimen/margin_10"
+        android:visibility="gone"
+        android:padding="@dimen/margin_5">
+
+        <TextView
+            android:id="@+id/tv_three_pic_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:text="德国小老虎被人类养大 活成了一只宠物狗"/>
+
+        <LinearLayout
+            android:id="@+id/ll_three_pic"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="@dimen/margin_5"
+            android:layout_below="@+id/tv_three_pic_title">
+
+            <ImageView
+                android:id="@+id/iv_three_pic_first"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/margin_5"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon"/>
+            <ImageView
+                android:id="@+id/iv_three_pic_second"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="@dimen/margin_5"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon"/>
+            <ImageView
+                android:id="@+id/iv_three_pic_third"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon"/>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_three_pic"
+            android:layout_marginTop="@dimen/margin_10">
+            <TextView
+                android:id="@+id/tv_three_pic_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="环球网"
+                android:textSize="12sp"
+                android:textColor="@color/fiftysix_txt"/>
+
+            <TextView
+                android:id="@+id/tv_three_pic_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="2017-01-11 12:04"
+                android:textSize="12sp"
+                android:textColor="@color/fiftysix_txt"/>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <View
+        style="@style/line_horizontal_out_block"/>
+
+</LinearLayout>
