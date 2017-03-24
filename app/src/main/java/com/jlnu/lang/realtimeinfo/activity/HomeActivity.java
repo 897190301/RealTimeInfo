@@ -1,11 +1,9 @@
 package com.jlnu.lang.realtimeinfo.activity;
 
 import android.os.Bundle;
-import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,8 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.jlnu.lang.realtimeinfo.adapter.HomeViewPagerAdapter;
 import com.jlnu.lang.realtimeinfo.R;
+import com.jlnu.lang.realtimeinfo.adapter.HomeViewPagerAdapter;
+import com.jlnu.lang.realtimeinfo.custom.MyTabView;
+import com.jlnu.lang.realtimeinfo.custom.NoSlideViewPager;
 import com.jlnu.lang.realtimeinfo.fragment.MyFragment;
 import com.jlnu.lang.realtimeinfo.fragment.NewsFragment;
 
@@ -23,9 +23,12 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+/**
+ * Created by lilang on 2017/2/26.
+ */
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MyTabView.onTabSelectListener{
 
     @Bind(R.id.toolbar)
     Toolbar toolbar;
@@ -33,14 +36,13 @@ public class HomeActivity extends AppCompatActivity
     DrawerLayout drawer;
     @Bind(R.id.nav_view)
     NavigationView navigationView;
-    @Bind(R.id.bottom_nav)
-    BottomNavigationView mBottomNavView;
     @Bind(R.id.viewPager)
-    ViewPager mViewPager;
+    NoSlideViewPager mViewPager;
+    @Bind(R.id.myTab)
+    MyTabView myTabView;
 
     private List<Fragment> mFragments;
     private HomeViewPagerAdapter mViewPagerAdapter;
-    private MenuItem pre_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,22 +55,24 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void initData() {
-        initFragments();
+        mFragments = new ArrayList<>();
+        mFragments.add(new NewsFragment());
+        //mFragments.add(MyFragment.newInstance("新闻"));
+        mFragments.add(MyFragment.newInstance("电影"));
+        mFragments.add(MyFragment.newInstance("天气"));
+        mFragments.add(MyFragment.newInstance("我"));
     }
 
     private void initView() {
         initToolbar();
         initDrawer();
         initNavigationView();
+        initTabView();
         initViewPager();
-        initBottomNavigationView();
     }
 
-    private void initFragments() {
-        mFragments = new ArrayList<>();
-        mFragments.add(new NewsFragment());
-        mFragments.add(MyFragment.newInstance("电影"));
-        mFragments.add(MyFragment.newInstance("天气"));
+    private void initTabView() {
+        myTabView.setListener(this);
     }
 
     private void initToolbar() {
@@ -89,26 +93,7 @@ public class HomeActivity extends AppCompatActivity
     private void initViewPager() {
         mViewPagerAdapter = new HomeViewPagerAdapter(getSupportFragmentManager(),mFragments);
         mViewPager.setAdapter(mViewPagerAdapter);
-    }
-
-    private void initBottomNavigationView() {
-        mBottomNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.news:
-                        mViewPager.setCurrentItem(0);
-                        break;
-                    case R.id.film:
-                        mViewPager.setCurrentItem(1);
-                        break;
-                    case R.id.weather:
-                        mViewPager.setCurrentItem(2);
-                        break;
-                }
-                return false;
-            }
-        });
+        mViewPager.setOffscreenPageLimit(4);
     }
 
     @Override
@@ -164,5 +149,10 @@ public class HomeActivity extends AppCompatActivity
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void setPosition(int position) {
+        mViewPager.setCurrentItem(position, false);
     }
 }

@@ -27,6 +27,7 @@ public class NewsItemRVAdapter extends RecyclerView.Adapter<NewsItemRVAdapter.Vi
 
     private List<NewsInfo> mNewsInfoList;
     private LayoutInflater mInflater;
+    private OnItemClickListener listener;
 
 
     public NewsItemRVAdapter(Context context) {
@@ -118,6 +119,14 @@ public class NewsItemRVAdapter extends RecyclerView.Adapter<NewsItemRVAdapter.Vi
             super(itemView);
             ButterKnife.bind(this,itemView);
         }
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick();
     }
 
 

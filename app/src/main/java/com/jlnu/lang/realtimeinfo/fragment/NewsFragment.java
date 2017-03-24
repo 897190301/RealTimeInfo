@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import com.jlnu.lang.realtimeinfo.R;
 import com.jlnu.lang.realtimeinfo.adapter.NewsViewPagerAdapter;
+import com.jlnu.lang.realtimeinfo.custom.ChildViewPager;
 import com.jlnu.lang.realtimeinfo.ui.PagerSlidingTabStrip;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import butterknife.ButterKnife;
  * Created by qn on 2017/3/6.
  */
 
-public class NewsFragment extends Fragment {
+public class NewsFragment extends Fragment implements ChildViewPager.OnSingleTouchListener{
 
     @Bind(R.id.news_vp)
     ViewPager newsVp;
@@ -67,6 +68,7 @@ public class NewsFragment extends Fragment {
         mNewsVpAdapter = new NewsViewPagerAdapter(getFragmentManager());
         mNewsVpAdapter.setData(keys, mFragments);
         newsVp.setAdapter(mNewsVpAdapter);
+        newsVp.setOffscreenPageLimit(1);
     }
 
     private void initTabStrip() {
@@ -86,5 +88,10 @@ public class NewsFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onSingleTouch() {
+
     }
 }

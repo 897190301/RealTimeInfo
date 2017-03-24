@@ -10,23 +10,22 @@
     tools:showIn="@layout/app_bar_home"
     tools:context="com.jlnu.lang.realtimeinfo.activity.HomeActivity">
 
-    <android.support.v4.view.ViewPager
+    <com.jlnu.lang.realtimeinfo.custom.NoSlideViewPager
 
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:requiresFadingEdge="none">
-    </android.support.v4.view.ViewPager>
+    </com.jlnu.lang.realtimeinfo.custom.NoSlideViewPager>
 
     <View
         style="@style/line_horizontal_out_block"
-        android:layout_above="@+id/bottom_nav"/>
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_nav"
+        android:layout_above="@+id/myTab"/>
+    <com.jlnu.lang.realtimeinfo.custom.MyTabView
+        android:id="@+id/myTab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/tab_bg"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_navigation">
-    </android.support.design.widget.BottomNavigationView>
+        android:layout_alignParentBottom="true">
+
+    </com.jlnu.lang.realtimeinfo.custom.MyTabView>
 </RelativeLayout>

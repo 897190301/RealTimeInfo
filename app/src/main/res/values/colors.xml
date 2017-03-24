@@ -6,4 +6,11 @@
     <color name="color_red">#FF0000</color>
     <color name="background_tab_pressed">#6633B5E5</color>
     <color name="fiftysix_txt">#8E000000</color>
+    <color name="bg_color">#F6F6F6</color>
+    <color name="white">#FFFFFF</color>
+    <color name="loading_txt_color">#5A5A5A</color>
+    <color name="checked">#CF112D</color>
+    <color name="unchecked">#939393</color>
+    <color name="home_tab_text">#707070</color>
+    <color name="home_tab_text_check">#13227a</color>
 </resources>

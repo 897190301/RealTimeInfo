@@ -49,7 +49,7 @@
             android:layout_marginLeft="35dp"
             android:layout_marginRight="10dp"
             android:layout_toLeftOf="@id/listview_header_text"
-            android:src="@mipmap/ic_pulltorefresh_arrow" />
+            android:src="@mipmap/ptr_rotate_arrow" />
 
         <ImageView
             android:id="@+id/listview_header_progressbar"

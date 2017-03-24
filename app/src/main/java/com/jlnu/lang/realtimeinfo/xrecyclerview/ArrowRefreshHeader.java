@@ -68,8 +68,12 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
     }
 
     public void setState(int state) {
-        if (state == mState) return;
-
+        if (state == STATE_NORMAL) {
+            mArrowImageView.setVisibility(View.VISIBLE);
+            mArrowImageView.setImageResource(R.mipmap.ptr_rotate_arrow);
+            mProgressBar.setVisibility(View.INVISIBLE);
+            return;
+        }
         if (state == STATE_REFRESHING) {    // 显示进度
             mArrowImageView.clearAnimation();
             mArrowImageView.setVisibility(View.INVISIBLE);
@@ -81,6 +85,7 @@ public class ArrowRefreshHeader extends LinearLayout implements BaseRefreshHeade
             mAnimationDrawable.stop();
         } else {    // 显示箭头图片
             mArrowImageView.setVisibility(View.VISIBLE);
+            mArrowImageView.setImageResource(R.mipmap.ptr_rotate_arrow_up);
             mProgressBar.setVisibility(View.INVISIBLE);
             mAnimationDrawable.stop();
         }

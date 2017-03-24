@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by qn on 2017/2/26.
+ * Created by lilang on 2017/2/26.
  */
 
 public class App extends Application {
