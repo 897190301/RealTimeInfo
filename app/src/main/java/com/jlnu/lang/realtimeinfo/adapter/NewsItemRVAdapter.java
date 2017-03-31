@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -52,6 +53,7 @@ public class NewsItemRVAdapter extends RecyclerView.Adapter<NewsItemRVAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.setPosition(position);
         NewsInfo newsInfo = mNewsInfoList.get(position);
         if (newsInfo == null) {
             return;
@@ -114,10 +116,27 @@ public class NewsItemRVAdapter extends RecyclerView.Adapter<NewsItemRVAdapter.Vi
         RelativeLayout rl_one_pic;
         @Bind(R.id.rl_three_pic)
         RelativeLayout rl_three_pic;
+        @Bind(R.id.ll_news_item)
+        LinearLayout ll_news_item;
+
+        private int position;
+
+        public void setPosition(int position) {
+            this.position = position;
+        }
 
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+
+            ll_news_item.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        listener.onItemClick(mNewsInfoList.get(position).getUrl());
+                    }
+                }
+            });
         }
     }
 
@@ -126,7 +145,7 @@ public class NewsItemRVAdapter extends RecyclerView.Adapter<NewsItemRVAdapter.Vi
     }
 
     public interface OnItemClickListener {
-        void onItemClick();
+        void onItemClick(String url);
     }
 
 

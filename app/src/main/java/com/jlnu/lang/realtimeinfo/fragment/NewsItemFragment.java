@@ -1,5 +1,6 @@
 package com.jlnu.lang.realtimeinfo.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.jlnu.lang.realtimeinfo.R;
+import com.jlnu.lang.realtimeinfo.activity.NewsDetailActivity;
 import com.jlnu.lang.realtimeinfo.adapter.NewsItemRVAdapter;
 import com.jlnu.lang.realtimeinfo.application.App;
 import com.jlnu.lang.realtimeinfo.bean.GetNewsResult;
@@ -29,7 +31,7 @@ import butterknife.ButterKnife;
  * Created by qn on 2017/1/11.
  */
 
-public class NewsItemFragment extends Fragment implements IGetNewsView {
+public class NewsItemFragment extends Fragment implements IGetNewsView, NewsItemRVAdapter.OnItemClickListener {
 
     @Bind(R.id.news_item_recyclerview)
     XRecyclerView mNewsRecyclerView;
@@ -96,6 +98,7 @@ public class NewsItemFragment extends Fragment implements IGetNewsView {
         mNewsRecyclerView.setLayoutManager(mLinearLayoutManager);
         mRvNewsAdapter = new NewsItemRVAdapter(getActivity());
         mNewsRecyclerView.setAdapter(mRvNewsAdapter);
+        mRvNewsAdapter.setOnItemClickListener(this);
         mNewsRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -138,5 +141,11 @@ public class NewsItemFragment extends Fragment implements IGetNewsView {
     @Override
     public void onGetNewsFailure(String errorInfo) {
         //Log.e("onGetNewsFailure", errorInfo);
+    }
+
+    @Override
+    public void onItemClick(String url) {
+        Intent intent = NewsDetailActivity.newIntent(getActivity(), url);
+        startActivity(intent);
     }
 }
