@@ -80,7 +80,7 @@ public class NewsItemRVAdapter extends RecyclerView.Adapter<NewsItemRVAdapter.Vi
                 holder.iv_three_pic_third.setVisibility(View.VISIBLE);
                 ImageUtils.loadToImageView(newsInfo.getThumbnail_pic_s03(), holder.iv_three_pic_third);
             } else {
-                holder.iv_three_pic_third.setVisibility(View.GONE);
+                holder.iv_three_pic_third.setVisibility(View.INVISIBLE);
             }
         }
     }

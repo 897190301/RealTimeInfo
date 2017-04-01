@@ -1,7 +1,7 @@
 package com.jlnu.lang.realtimeinfo.bean;
 
 /**
- * Created by qn on 2017/1/11.
+ * Created by lilang on 2017/1/11.
  */
 
 public class BaseInfo {

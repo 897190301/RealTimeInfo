@@ -31,4 +31,7 @@
     <string name="refresh_done">刷新完成</string>
     <string name="listview_header_last_time">上次更新时间：</string>
     <string name="data_loading">努力加载中...</string>
+
+    <string name="load_error">加载失败,点击刷新</string>
+    <string name="reload">点我重试</string>
 </resources>

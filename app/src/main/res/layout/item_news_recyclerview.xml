@@ -20,7 +20,6 @@
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             android:layout_marginRight="@dimen/margin_10"
-            android:src="@mipmap/icon"
             />
         <TextView
             android:id="@+id/tv_one_pic_title"
@@ -28,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/iv_one_pic"
             android:layout_toRightOf="@id/iv_one_pic"
+            android:textColor="@color/title_black"
             android:maxLines="2"
             android:ellipsize="end"
             android:text=""/>
@@ -73,7 +73,8 @@
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:ellipsize="end"
-            android:text="德国小老虎被人类养大 活成了一只宠物狗"/>
+            android:textColor="@color/title_black"
+            android:text=""/>
 
         <LinearLayout
             android:id="@+id/ll_three_pic"
@@ -88,23 +89,20 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="@dimen/margin_5"
-                android:scaleType="fitXY"
-                android:src="@mipmap/icon"/>
+                android:scaleType="fitXY" />
             <ImageView
                 android:id="@+id/iv_three_pic_second"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginRight="@dimen/margin_5"
-                android:scaleType="fitXY"
-                android:src="@mipmap/icon"/>
+                android:scaleType="fitXY" />
             <ImageView
                 android:id="@+id/iv_three_pic_third"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:scaleType="fitXY"
-                android:src="@mipmap/icon"/>
+                android:scaleType="fitXY" />
 
         </LinearLayout>
 

@@ -1,9 +1,10 @@
-package com.jlnu.lang.realtimeinfo.model;
+package com.jlnu.lang.realtimeinfo.model.impl;
 
 import android.util.Log;
 
 import com.jlnu.lang.realtimeinfo.common.Constant;
-import com.jlnu.lang.realtimeinfo.listener.IGetNewListener;
+import com.jlnu.lang.realtimeinfo.listener.IGetFilmsListener;
+import com.jlnu.lang.realtimeinfo.model.IGetFilmsModel;
 import com.jlnu.lang.realtimeinfo.network.StateCode;
 import com.jlnu.lang.realtimeinfo.network.URLs;
 
@@ -21,25 +22,24 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * Created by qn on 2017/1/11.
+ * Created by qn on 2017/4/1.
  */
 
-public class GetNewsModel implements IGetNewsModel{
+public class GetFilmsModel implements IGetFilmsModel{
 
-    private IGetNewListener listener;
+    private IGetFilmsListener listener;
     private String url;
 
-    public GetNewsModel(IGetNewListener listener) {
+    public GetFilmsModel(IGetFilmsListener listener) {
         this.listener = listener;
-        url = URLs.IP;
+        url = URLs.FILMS_IP;
     }
 
     @Override
-    public void getNews(String type) {
+    public void getFilms() {
         OkHttpClient mOkHttpClient = new OkHttpClient();
         RequestBody requestBody = new FormBody.Builder()
-                .add("type", type)
-                .add("key", Constant.NEWS_KEY)
+                .add("key", Constant.FILMS_KEY)
                 .build();
         Request request = new Request.Builder()
                 .url(url)
@@ -52,7 +52,7 @@ public class GetNewsModel implements IGetNewsModel{
                 if (listener == null) {
                     return;
                 }
-                listener.onGetNewsFailure("接口没调通");
+                listener.getFilmsFail("接口没调通");
             }
 
             @Override
@@ -66,15 +66,15 @@ public class GetNewsModel implements IGetNewsModel{
                     JSONObject jsonObject = new JSONObject(responseBody);
                     int returnCode = jsonObject.getInt("error_code");
                     if (returnCode == StateCode.RETURN_CODE_OK) {
-                        listener.onGetNewSuccess(responseBody);
+                        listener.getFilmsSuccess(responseBody);
                     } else {
-                        listener.onGetNewsFailure("数据解析异常");
+                        listener.getFilmsFail("数据解析异常");
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         });
-    }
 
+    }
 }

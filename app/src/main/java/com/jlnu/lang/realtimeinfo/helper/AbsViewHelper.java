@@ -6,21 +6,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
+import android.widget.TextView;
 import com.jlnu.lang.realtimeinfo.R;
 
 /**
  * Created by lilang on 2017/3/7.
  */
 
-public class AbsViewHelper {
+public class AbsViewHelper implements View.OnClickListener{
 
     private Context context;
     private LinearLayout rootLay;
     //数据加载
-    private View dataLoadingView;
+    private View dataLoadingView; //加载中
+    protected View dataErrorView  = null; //网络异常
     private ImageView iv_data_load;
+    private TextView tvReload = null;
     private AnimationDrawable animationDrawable;
+    private OnOrderStatusListener listener;
 
     public AbsViewHelper(Context context, LinearLayout linearLayout) {
         this.context = context;
@@ -29,13 +32,17 @@ public class AbsViewHelper {
     }
 
     public void inflaterViews() {
-        dataLoadingView = LayoutInflater.from(context).inflate(R.layout.view_data_loading, null);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        dataLoadingView = inflater.inflate(R.layout.view_data_loading, null);
+        dataErrorView = inflater.inflate(R.layout.view_load_error, null);
         findViews();
     }
 
     public void findViews() {
         iv_data_load = (ImageView) dataLoadingView.findViewById(R.id.iv_data_load);
         animationDrawable = (AnimationDrawable) iv_data_load.getBackground();
+        tvReload = (TextView) dataErrorView.findViewById(R.id.tvReload);
+        tvReload.setOnClickListener(this);
     }
 
     /**
@@ -49,6 +56,17 @@ public class AbsViewHelper {
         clearAllViews();
         rootLay.addView(dataLoadingView);
         animationDrawable.start();
+    }
+
+    //设置数据异常
+    public void setDataError(){
+        if (rootLay == null) {
+            return;
+        }
+        clearAllViews();
+        setGone(false);
+        rootLay.addView(dataErrorView);
+        cancelAnimation();
     }
 
     public void clearViewAndGone() {
@@ -93,6 +111,31 @@ public class AbsViewHelper {
         }
         if (rootLay.getChildCount() > 0) {
             rootLay.removeAllViews();
+        }
+    }
+
+    /**
+     * 监听按钮点击
+     */
+    public interface OnOrderStatusListener {
+        void onClickButton();
+    }
+
+    public void setOrderStatusListener(OnOrderStatusListener listener) {
+        this.listener = listener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.tvReload:
+                if (listener != null) {
+                    listener.onClickButton();
+                }
+
+                break;
+            default:
+                break;
         }
     }
 }

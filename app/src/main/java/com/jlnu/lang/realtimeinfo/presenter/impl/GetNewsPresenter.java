@@ -4,7 +4,7 @@ package com.jlnu.lang.realtimeinfo.presenter.impl;
 import com.google.gson.Gson;
 import com.jlnu.lang.realtimeinfo.bean.GetNewsResult;
 import com.jlnu.lang.realtimeinfo.listener.IGetNewListener;
-import com.jlnu.lang.realtimeinfo.model.GetNewsModel;
+import com.jlnu.lang.realtimeinfo.model.impl.GetNewsModel;
 import com.jlnu.lang.realtimeinfo.model.IGetNewsModel;
 import com.jlnu.lang.realtimeinfo.presenter.IGetNewsPresenter;
 import com.jlnu.lang.realtimeinfo.view.IGetNewsView;

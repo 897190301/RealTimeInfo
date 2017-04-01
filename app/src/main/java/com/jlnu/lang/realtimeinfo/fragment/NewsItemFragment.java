@@ -28,10 +28,10 @@ import butterknife.ButterKnife;
 
 
 /**
- * Created by qn on 2017/1/11.
+ * Created by lilang on 2017/1/11.
  */
 
-public class NewsItemFragment extends Fragment implements IGetNewsView, NewsItemRVAdapter.OnItemClickListener {
+public class NewsItemFragment extends Fragment implements IGetNewsView, NewsItemRVAdapter.OnItemClickListener, AbsViewHelper.OnOrderStatusListener {
 
     @Bind(R.id.news_item_recyclerview)
     XRecyclerView mNewsRecyclerView;
@@ -72,6 +72,7 @@ public class NewsItemFragment extends Fragment implements IGetNewsView, NewsItem
         mGetNewsPresenter = new GetNewsPresenter(this);
         newsType = App.getNewsType(getArguments().getString(NEWS_KEY));
         viewHelper = new AbsViewHelper(getActivity(), ll_cover);
+        viewHelper.setOrderStatusListener(this);
     }
 
     private void loadData() {
@@ -141,11 +142,23 @@ public class NewsItemFragment extends Fragment implements IGetNewsView, NewsItem
     @Override
     public void onGetNewsFailure(String errorInfo) {
         //Log.e("onGetNewsFailure", errorInfo);
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                setHasData(false);
+                viewHelper.setDataError();
+            }
+        });
     }
 
     @Override
     public void onItemClick(String url) {
         Intent intent = NewsDetailActivity.newIntent(getActivity(), url);
         startActivity(intent);
+    }
+
+    @Override
+    public void onClickButton() {
+        mGetNewsPresenter.getNews(newsType);
     }
 }

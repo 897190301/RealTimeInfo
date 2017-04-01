@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#2b2b2b</color>
     <color name="colorAccent">#FF4081</color>
     <color name="color_red">#FF0000</color>
     <color name="background_tab_pressed">#6633B5E5</color>
@@ -12,5 +12,8 @@
     <color name="checked">#CF112D</color>
     <color name="unchecked">#939393</color>
     <color name="home_tab_text">#707070</color>
-    <color name="home_tab_text_check">#13227a</color>
+    <color name="home_tab_text_check">#51cc00</color>
+    <color name="base_green">#51cc00</color>
+    <color name="title_black">#000000</color>
+    <color name="toolbar_black">#2b2b2b</color>
 </resources>

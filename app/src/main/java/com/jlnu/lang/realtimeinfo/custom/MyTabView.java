@@ -49,12 +49,12 @@ public class MyTabView extends LinearLayout{
 				changeTabStatus(R.id.ll_news);
 				listener.setPosition(0);
 				break;
-			case R.id.ll_film:
-				changeTabStatus(R.id.ll_film);
-				listener.setPosition(1);
-				break;
 			case R.id.ll_weather:
 				changeTabStatus(R.id.ll_weather);
+				listener.setPosition(1);
+				break;
+			case R.id.ll_film:
+				//changeTabStatus(R.id.ll_film);
 				listener.setPosition(2);
 				break;
 			case R.id.ll_me:
