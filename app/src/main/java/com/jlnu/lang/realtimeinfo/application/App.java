@@ -1,6 +1,6 @@
 package com.jlnu.lang.realtimeinfo.application;
 
-import android.app.Application;
+import org.litepal.LitePalApplication;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,7 +9,7 @@ import java.util.Map;
  * Created by lilang on 2017/2/26.
  */
 
-public class App extends Application {
+public class App extends LitePalApplication {
 
     private static App instance;
     private static Map<String, String> typeMap;

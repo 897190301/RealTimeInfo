@@ -12,6 +12,7 @@ import com.jlnu.lang.realtimeinfo.R;
 import com.jlnu.lang.realtimeinfo.adapter.HomeViewPagerAdapter;
 import com.jlnu.lang.realtimeinfo.custom.MyTabView;
 import com.jlnu.lang.realtimeinfo.custom.NoSlideViewPager;
+import com.jlnu.lang.realtimeinfo.fragment.ChooseAreaFragment;
 import com.jlnu.lang.realtimeinfo.fragment.MyFragment;
 import com.jlnu.lang.realtimeinfo.fragment.NewsFragment;
 
@@ -49,7 +50,8 @@ public class HomeActivity extends AppCompatActivity
     private void initData() {
         mFragments = new ArrayList<>();
         mFragments.add(new NewsFragment());
-        mFragments.add(MyFragment.newInstance("天气"));
+        //mFragments.add(MyFragment.newInstance("天气"));
+        mFragments.add(new ChooseAreaFragment());
         mFragments.add(MyFragment.newInstance("电影"));
         mFragments.add(MyFragment.newInstance("我"));
     }
