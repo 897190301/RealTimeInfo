@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -28,8 +27,6 @@ import butterknife.ButterKnife;
 public class HomeActivity extends AppCompatActivity
         implements MyTabView.onTabSelectListener{
 
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
     @Bind(R.id.viewPager)
     NoSlideViewPager mViewPager;
     @Bind(R.id.myTab)
@@ -57,7 +54,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     private void initView() {
-        initToolbar();
+        //initToolbar();
         initTabView();
         initViewPager();
     }
@@ -66,11 +63,7 @@ public class HomeActivity extends AppCompatActivity
         myTabView.setListener(this);
     }
 
-    private void initToolbar() {
-        toolbar.setBackgroundColor(getResources().getColor(R.color.toolbar_black));
-        toolbar.setTitle("");
-        setSupportActionBar(toolbar);
-    }
+
 
     private void initViewPager() {
         mViewPagerAdapter = new HomeViewPagerAdapter(getSupportFragmentManager(),mFragments);

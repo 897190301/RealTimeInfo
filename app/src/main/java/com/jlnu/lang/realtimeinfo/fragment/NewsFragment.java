@@ -3,6 +3,8 @@ package com.jlnu.lang.realtimeinfo.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,8 @@ public class NewsFragment extends Fragment implements ChildViewPager.OnSingleTou
     ViewPager newsVp;
     @Bind(R.id.tab_strip)
     PagerSlidingTabStrip tabStrip;
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     private NewsViewPagerAdapter mNewsVpAdapter;
     private String[] keys;
@@ -60,8 +64,15 @@ public class NewsFragment extends Fragment implements ChildViewPager.OnSingleTou
     }
 
     private void initViews() {
+        initToolbar();
         initViewPager();
         initTabStrip();
+    }
+
+    private void initToolbar() {
+        toolbar.setBackgroundColor(getResources().getColor(R.color.toolbar_black));
+        toolbar.setTitle("");
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
     }
 
     private void initViewPager() {
