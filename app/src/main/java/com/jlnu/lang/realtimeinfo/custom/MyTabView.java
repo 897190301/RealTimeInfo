@@ -30,18 +30,14 @@ public class MyTabView extends LinearLayout{
 	ImageView iv_film;
 	@Bind(R.id.iv_weather)
 	ImageView iv_weather;
-	@Bind(R.id.iv_me)
-	ImageView iv_me;
 	@Bind(R.id.tv_news)
 	TextView tv_news;
 	@Bind(R.id.tv_film)
 	TextView tv_film;
 	@Bind(R.id.tv_weather)
 	TextView tv_weather;
-	@Bind(R.id.tv_me)
-	TextView tv_me;
 
-	@OnClick({R.id.ll_news, R.id.ll_film, R.id.ll_weather, R.id.ll_me})
+	@OnClick({R.id.ll_news, R.id.ll_film, R.id.ll_weather})
 	public void onClick(View v) {
 		switch (v.getId()) {
 
@@ -49,17 +45,13 @@ public class MyTabView extends LinearLayout{
 				changeTabStatus(R.id.ll_news);
 				listener.setPosition(0);
 				break;
-			case R.id.ll_weather:
-				changeTabStatus(R.id.ll_weather);
-				listener.setPosition(1);
-				break;
 			case R.id.ll_film:
 				//changeTabStatus(R.id.ll_film);
-				listener.setPosition(2);
+				listener.setPosition(1);
 				break;
-			case R.id.ll_me:
-				changeTabStatus(R.id.ll_me);
-				listener.setPosition(3);
+			case R.id.ll_weather:
+				changeTabStatus(R.id.ll_weather);
+				listener.setPosition(2);
 				break;
 			default:
 				break;
@@ -105,12 +97,10 @@ public class MyTabView extends LinearLayout{
 		iv_news.setImageResource(R.mipmap.news_uncheck);
 		iv_film.setImageResource(R.mipmap.film_uncheck);
 		iv_weather.setImageResource(R.mipmap.weather_uncheck);
-		iv_me.setImageResource(R.mipmap.me_uncheck);
 
 		tv_news.setTextColor(this.getResources().getColor(R.color.home_tab_text));
 		tv_film.setTextColor(this.getResources().getColor(R.color.home_tab_text));
 		tv_weather.setTextColor(this.getResources().getColor(R.color.home_tab_text));
-		tv_me.setTextColor(this.getResources().getColor(R.color.home_tab_text));
 
 		switch (id) {
 			case R.id.ll_news:
@@ -124,10 +114,6 @@ public class MyTabView extends LinearLayout{
 			case R.id.ll_weather:
 				iv_weather.setImageResource(R.mipmap.weather_check);
 				tv_weather.setTextColor(this.getResources().getColor(R.color.home_tab_text_check));
-				break;
-			case R.id.ll_me:
-				iv_me.setImageResource(R.mipmap.me_check);
-				tv_me.setTextColor(this.getResources().getColor(R.color.home_tab_text_check));
 				break;
 			default:
 				break;

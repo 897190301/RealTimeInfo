@@ -108,6 +108,7 @@ public class NewsItemFragment extends Fragment implements IGetNewsView, NewsItem
 
             @Override
             public void onLoadMore() {
+                mNewsRecyclerView.loadMoreComplete();
             }
         });
     }

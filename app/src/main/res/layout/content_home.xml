@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/content_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/app_bar_home"
-    tools:context="com.jlnu.lang.realtimeinfo.activity.HomeActivity">
+    android:orientation="vertical">
 
     <com.jlnu.lang.realtimeinfo.custom.NoSlideViewPager
 
@@ -20,9 +15,6 @@
         android:requiresFadingEdge="none">
     </com.jlnu.lang.realtimeinfo.custom.NoSlideViewPager>
 
-    <View
-        style="@style/line_horizontal_out_block"
-        android:layout_above="@+id/myTab"/>
     <com.jlnu.lang.realtimeinfo.custom.MyTabView
         android:id="@+id/myTab"
         android:layout_width="match_parent"
