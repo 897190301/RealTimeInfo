@@ -162,7 +162,18 @@ public class WeatherFragment extends Fragment {
             public void onResponse(Call call, Response response) throws IOException {
                 final String responseText = response.body().string();
                 final Weather weather = Utility.handleWeatherResponse(responseText);
-                weatherId = weather.basic.weatherId;
+                try {
+                    weatherId = weather.basic.weatherId;
+                }catch (Exception e) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getContext(), "暂无此城市天气信息", Toast.LENGTH_LONG).show();
+                            swipeRefresh.setRefreshing(false);
+                        }
+                    });
+                    return;
+                }
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
